@@ -7,5 +7,9 @@ how works:
   if there are files with images or docs like extentions will move into them.
 
 sorts files: 
-  img : jpg, jpeg, png, gif
-  docs : txt, docx, pdf
+
+img : jpg , jpeg , png , gif 
+
+docs : txt , docx , pdf
+
+scripts : sh , py , bat , cpp
