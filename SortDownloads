@@ -1,0 +1,125 @@
+#!/bin/sh
+DIR1="$HOME/Downloads"
+IMG_DIR="$HOME/Downloads/img"
+DOCS_DIR="$HOME/Downloads/docs"
+SCR_DIR="$HOME/Downloads/scripts"
+
+echo "ls $HOME/Downloads"
+
+sleep 1.5
+
+echo "--------------------------"
+ls "$HOME/Downloads"
+echo "--------------------------"
+
+sleep 1
+
+echo ""
+
+if [ ! -d "$IMG_DIR" ]; then
+	echo 'there isnt folder Images in ~/Downloads'
+	sleep 2
+	mkdir "$IMG_DIR"
+	echo 'folder created'
+fi
+
+sleep 2
+
+echo "--------------------------"
+ls "$HOME/Downloads"
+echo "--------------------------"
+
+sleep 2
+
+echo "sorting images (.jpg ; .jpeg ; .png ; .gif) "
+sleep 2
+
+
+for file in "$DIR1"/*; do
+    if [ -f "$file" ]; then
+        ext="${file##*.}"
+        ext=$(echo "$ext" | tr 'A-Z' 'a-z')
+
+        case "$ext" in
+            jpg|jpeg|png|gif)
+                mv -n "$file" "$IMG_DIR/"
+                ;;
+        esac
+    fi
+done
+
+echo ""
+
+
+
+
+echo "====Documents===="
+
+if [ ! -d "$DOCS_DIR" ]; then
+	echo 'there isnt folder Documents in ~/Downloads'
+	sleep 2
+	mkdir "$DOCS_DIR"
+	echo 'folder created'
+fi
+
+sleep 2
+
+echo "--------------------------"
+ls "$HOME/Downloads"
+echo "--------------------------"
+
+sleep 2
+
+echo "sorting Documents (.txt ; .docx ; .pdf) "
+sleep 2
+
+
+for file in "$DIR1"/*; do
+    if [ -f "$file" ]; then
+        ext="${file##*.}"
+        ext=$(echo "$ext" | tr 'A-Z' 'a-z')
+
+        case "$ext" in
+            txt|docx|pdf)
+                mv -n "$file" "$DOCS_DIR/"
+                ;;
+        esac
+    fi
+done
+
+
+
+
+echo "====Scripts===="
+
+if [ ! -d "$SCR_DIR" ]; then
+	echo 'there isnt folder scripts in ~/Downloads'
+	sleep 2
+	mkdir "$SCR_DIR"
+	echo 'folder created'
+fi
+
+sleep 2
+
+echo "--------------------------"
+ls "$HOME/Downloads"
+echo "--------------------------"
+
+sleep 2
+
+echo "sorting scripts (.sh ; .py ; .bat ; .cpp) "
+sleep 2
+
+
+for file in "$DIR1"/*; do
+    if [ -f "$file" ]; then
+        ext="${file##*.}"
+        ext=$(echo "$ext" | tr 'A-Z' 'a-z')
+
+        case "$ext" in
+            sh|py|bat|cpp)
+                mv -n "$file" "$SCR_DIR/"
+                ;;
+        esac
+    fi
+done
